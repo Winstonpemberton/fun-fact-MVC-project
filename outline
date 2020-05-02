@@ -1,0 +1,43 @@
+step one: set up
+	- make the environment rb
+	- get the gems needed
+	- make the rake file
+
+step two: migrations
+	- create user table
+		- users have an email, password and facts
+	- create category table
+		- categories have names and facts
+	- create facts table
+		- facts have names, dates and descriptions
+
+step three: models
+	- create user class have take for active record
+		- has a secure password
+		- users have many facts through categories
+	- create category class
+		- categories have many facts
+	- create facts table
+		- facts belong to categories
+
+step four: scraping
+	- take the scrape used in the last project and rework it for this one
+	- try to fix why it breaks for some categories
+
+step five: config.ru and controllers
+	- create config.ru file
+		- user controller and run the application controller
+	- create the application controller
+	- inherent from the application controller to create model contollers and enable sessions for the controllers
+	- user controller needs a create route, edit route, index route, view route and logout route
+
+step six: views
+	- create the form for creating a user
+	- create form for selecting a category
+	- create form for selecting a fact
+	- create editing a user form
+	- create form for deleting a fact
+
+step seven: CSS
+	- try styling the webpage
+	- if you fail take the one the one from the labs 
