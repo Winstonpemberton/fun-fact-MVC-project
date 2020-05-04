@@ -1,6 +1,8 @@
 
 require 'bundler/setup'
 Bundler.require
+# require 'open-uri'
+require_all './app'
 
 ENV['SINATRA_ENV'] ||= "development"
 

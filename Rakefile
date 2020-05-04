@@ -10,5 +10,5 @@ end
 
 desc 'drop into the Pry console'
 task :scraper => :environment do
-  scraper = Scraper.new
+  Scraper.scrape_main_page
 end
