@@ -25,14 +25,15 @@ class Scraper
     facts = []
 
     scrape_facts.css("article").collect do |fact|
-      binding.pry
       fact_object = Fact.new
       fact_object.title = fact.css("h2.entry-title").text.split(" – ")[1]
-      image = fact.css("div.post-image img").attribute("src").value
+      fact_object.image_url = fact.css("div.post-image img").attribute("src").value
       description_source_url = fact.css("h2.entry-title a").attribute("href").value
+
       description_source_info = Nokogiri::HTML(open(description_source_url))
       fact_object.description = description_source_info.css("div.inside-article p").text.split(" – WTF Fun Facts Source: ")[0]
       source_info = description_source_info.css("div.inside-article p").text.split(" – WTF Fun Facts Source: ")[1]
+
       if source_info == nil
         fact_object.description = description_source_info.css("div.inside-article p").text.split(" – WTF Fun FactsSource: ")[0]
       end
