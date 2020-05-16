@@ -12,9 +12,11 @@ class UserController < ApplicationController
     user = User.create(params)
     session[:id] = user.id
 
-
     redirect to '/index'
   end
+
+  post '/user/facts' do
+
 
 
   post '/login' do
