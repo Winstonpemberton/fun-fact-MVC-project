@@ -7,4 +7,5 @@ end
 use Rack::MethodOverride
 use UserController
 use CategoryController
+use FactController
 run ApplicationController

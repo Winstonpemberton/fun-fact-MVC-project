@@ -1,4 +1,14 @@
 <h1>Welcome to your account</h1>
 <h2>You have <%= User.facts.size %> facts saved </h2>
 
+<label><h4>Facts</h4></label>
+<% User.facts.each do |fact| %>
+  <label><%= fact.title %></label>
+  <label><%= fact.description%></label>
+  <input type="checkbox" id="fact_<%=fact.id%>" name="user[facts]" value="<%= fact.id%>"><br>
+
+  <a href="/categories/<%=category.name%>"><%=category.name%></a>
+
+<% end %>
+
 <a class="button" href="/categories">Categories</a>
