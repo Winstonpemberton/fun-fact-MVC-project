@@ -5,10 +5,11 @@
 <% User.facts.each do |fact| %>
   <label><%= fact.title %></label>
   <label><%= fact.description%></label>
-  <input type="checkbox" id="fact_<%=fact.id%>" name="user[facts]" value="<%= fact.id%>"><br>
 
-  <a href="/categories/<%=category.name%>"><%=category.name%></a>
+  <a href="/fact/<%=fact.name%>"><%=fact.name%></a>
 
 <% end %>
 
 <a class="button" href="/categories">Categories</a>
+<a class="button" href="/account/edit">Edit Account Information</a>
+<a class="button" href="/fact/delete">Delete Fact</a>

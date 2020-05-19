@@ -1,0 +1,7 @@
+<h2>Select a Fact to Delete</h2>
+
+<form action="/fact/delete" method="post">
+  <input type="hidden" name="_method" value="delete" >
+  <input type="checkbox" id="fact_<%=fact.id%>" name="user[facts]" value="<%= fact.id%>"><br>
+  <%end%>
+  <input type="submit">

@@ -15,10 +15,6 @@ class UserController < ApplicationController
     redirect to '/index'
   end
 
-  post '/user/facts' do
-
-
-
   post '/login' do
     @user = User.find_by(:username => params[:username])
     if @user != nil && @user.password == params[:password]
@@ -36,5 +32,23 @@ class UserController < ApplicationController
       erb :error
     end
   end
+
+  get '/account' do
+    redirect to '/account'
+  end
+
+  get '/account/edit' do
+    erb :'account_edit'
+  end
+
+  post '/account/edit' do
+    @current_user = User.find_by_id(session[:user_id])
+    @current_user.username =  params[:username])
+    @current_user.password =  params[:password])
+    @current_user.email =  params[:email])
+
+    redirect to '/account'
+  end
+
 
 end
