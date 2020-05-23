@@ -10,4 +10,9 @@ class FactController < ApplicationController
   get "fact/delete" do
     erb :delete_fact
   end
+
+  delete "/fact/delete/:id" do
+    User.facts.destroy(params[:id])
+    redirect to "/account"
+  end
 end

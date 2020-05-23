@@ -1,7 +1,11 @@
 <h2>Select a Fact to Delete</h2>
 
-<form action="/fact/delete" method="post">
+<form action="/fact/delete/:id" method="post">
   <input type="hidden" name="_method" value="delete" >
-  <input type="checkbox" id="fact_<%=fact.id%>" name="user[facts]" value="<%= fact.id%>"><br>
-  <%end%>
+  <label><h4>Facts</h4></label>
+  <% @category_facts.each do |fact| %>
+    <label><%= fact.title %></label>
+    <label><%= fact.description%></label>
+    <input type="checkbox" id="fact_<%=fact.id%>" name="user[facts]" value="<%= fact.id%>"><br>
+  <% end %>
   <input type="submit">
