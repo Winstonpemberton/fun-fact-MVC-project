@@ -1,5 +1,16 @@
-  <% @categories.each do |category| %>
+<form action="/categories/:category" method="post">
+
+<label><h4>Categories</h4></label>
+<% @categories do |category| %>
+  <input type="radio" id="<%=category.id%>" name="<%=category.name%>" value="<%= category.id%>"><br>
+<% end %>
+
+
+  <!--<% @categories.each do |category| %>
     <a href="/categories/<%=category.name%>"><%=category.name%></a>
   <%end%>
+-->
+
+<input type="submit" value="category page">
 
 <a class="button" href="/account">Account</a>

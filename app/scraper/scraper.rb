@@ -3,6 +3,16 @@ require 'open-uri'
 require 'pry'
 
 class Scraper
+  def self.scrape_category_titles
+    scrape_categories = Nokogiri::HTML(open("https://wtffunfact.com/"))
+    category_names = scrape_categories.css("ul li.cat-item a").text.split /(?=[A-Z])/
+    category_names.each do |category|
+      category = Category.new
+      category.name = category_names[index]
+      Category.all << category
+    end
+  end
+
   def self.scrape_main_page
     scrape_categories = Nokogiri::HTML(open("https://wtffunfact.com/"))
     category_names = scrape_categories.css("ul li.cat-item a").text.split /(?=[A-Z])/
