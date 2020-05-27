@@ -6,15 +6,17 @@ class CategoryController < ApplicationController
     erb :categories
   end
 
-  post "/categories/:category" do
-    @category = params[:category]
-
+  post "/categories/:id" do
+    @category = Category.find(params[:id])
+    Scraper.scrape_facts(category)
+    @category_facts = category.facts
+    erb :category_facts
   end
 
-  Category.all.each do |category|
-    get "/category/#{category.name}" do
-      @category_facts = category.facts
-      erb :category_facts
-    end
-  end
+  # Category.all.each do |category|
+  #   get "/category/#{category.name}" do
+  #     @category_facts = category.facts
+  #     erb :category_facts
+  #   end
+  # end
 end

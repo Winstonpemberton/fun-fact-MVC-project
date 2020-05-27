@@ -3,10 +3,11 @@
 
 <label><h4>Facts</h4></label>
 <% User.facts.each do |fact| %>
-  <label><%= fact.title %></label>
+  <!--<label><%= fact.title %></label>-->
+  <a href="/fact/<%=fact.name%>"><%=fact.title%></a>
   <label><%= fact.description%></label>
 
-  <a href="/fact/<%=fact.name%>"><%=fact.name%></a>
+  <!--<a href="/fact/<%=fact.name%>"><%=fact.title%></a>-->
 
 <% end %>
 

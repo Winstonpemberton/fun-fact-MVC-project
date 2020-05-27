@@ -7,6 +7,12 @@ class FactController < ApplicationController
     end
   end
 
+  post "/fact/:id" do
+    @fact = Fact.find(params[:id])
+    User.facts  << @fact
+    redirect to "/account"
+  end
+
   get "fact/delete" do
     erb :delete_fact
   end

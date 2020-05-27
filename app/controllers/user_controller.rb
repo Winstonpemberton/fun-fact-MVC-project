@@ -33,7 +33,7 @@ class UserController < ApplicationController
     end
   end
 
-  get '/account' do
+  post '/account' do
     redirect to '/account'
   end
 
