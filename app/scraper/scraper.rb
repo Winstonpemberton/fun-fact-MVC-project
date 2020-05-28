@@ -10,9 +10,12 @@ class Scraper
   end
 
   def self.scrape_facts(category)
-    category_page = Nokogiri::HTML(open("https://wtffunfact.com/#{category.slug}-facts/")
-    if category_page == nil
-      category_page = Nokogiri::HTML(open("https://wtffunfact.com/#{category.slug}/")
+    category_page = Nokogiri::HTML(open("https://wtffunfact.com/#{category.name.downcase}-facts/"))
+
+    if category_page.empty
+      category_page = Nokogiri::HTML(open("https://wtffunfact.com/#{category.name.downcase}/"))
+    else
+      puts "something went wrong"
     end
 
     category.facts = scrape_fact_info(category_page)

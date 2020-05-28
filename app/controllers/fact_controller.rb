@@ -1,11 +1,11 @@
 class FactController < ApplicationController
 
-  User.facts.each do |fact|
-    get "/fact/#{fact.name}" do
-      @fact = fact
-      erb :fact_info
-    end
-  end
+  # User.facts.each do |fact|
+  #   get "/fact/#{fact.name}" do
+  #     @fact = fact
+  #     erb :'facts/fact_info'
+  #   end
+  # end
 
   post "/fact/:id" do
     @fact = Fact.find(params[:id])
@@ -14,7 +14,7 @@ class FactController < ApplicationController
   end
 
   get "fact/delete" do
-    erb :delete_fact
+    erb :'facts/delete_fact'
   end
 
   delete "/fact/delete/:id" do

@@ -3,6 +3,7 @@ require 'bundler/setup'
 Bundler.require
 # require 'open-uri'
 require_all './app'
+require_relative '../app/models/concerns/slugifiable.rb'
 
 ENV['SINATRA_ENV'] ||= "development"
 
