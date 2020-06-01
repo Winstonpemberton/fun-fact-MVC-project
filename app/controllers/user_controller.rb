@@ -1,9 +1,5 @@
 class UserController < ApplicationController
 
-  get '/' do
-    erb :index
-  end
-
   get '/sign_up' do
     erb :'account/sign_up'
   end
@@ -12,17 +8,25 @@ class UserController < ApplicationController
     user = User.create(params)
     session[:id] = user.id
 
-    redirect to '/'
+    if user.save
+      redirect '/'
+    else
+      redirect '/signup'
+    end
   end
 
   post '/login' do
-    @user = User.find_by(:username => params[:username])
-    if @user != nil && @user.password_digest == params[:password]
-      session[:user_id] = @user.id
-      redirect to '/account'
-    end
-    erb :'account/error'
+    login(params[:username], params[:password])
+    redirect '/account'
   end
+
+  #   @user = User.find_by(:username => params[:username])
+  #   if @user != nil && @user.password_digest == params[:password]
+  #     session[:user_id] = @user.id
+  #     redirect to '/account'
+  #   end
+  #   erb :'account/error'
+  # end
 
   get '/account' do
     @current_user = User.find_by_id(session[:user_id])
@@ -49,6 +53,5 @@ class UserController < ApplicationController
 
     redirect to '/account'
   end
-
 
 end

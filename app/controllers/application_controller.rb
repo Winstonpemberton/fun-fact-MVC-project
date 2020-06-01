@@ -1,6 +1,9 @@
 require './config/environment'
+require_relative "helper"
 
 class ApplicationController < Sinatra::Base
+   include Helper
+
   configure do
     enable :sessions
     set :session_secret, 'test'
@@ -11,26 +14,4 @@ class ApplicationController < Sinatra::Base
     erb :index
   end
 
-  # helpers do
-  #
-  #   def logged_in?
-  #     !!session[:id]
-  #   end
-  #
-  #   def current_user
-  #     @current_user ||= User.find(session[:id]) if session[:id]
-  #   end
-  #
-  #   def login(username, password)
-  #     user = User.find_by(:username => username)
-  #     if user && user.authenticate(password)
-  #       session[:id] = user.id
-  #     else
-  #       redirect '/login'
-  #     end
-  #   end
-  #
-  #   def logout!
-  #     session.clear
-  #   end
-  end
+end
