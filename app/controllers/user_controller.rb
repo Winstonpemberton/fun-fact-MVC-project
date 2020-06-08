@@ -16,6 +16,7 @@ class UserController < ApplicationController
   end
 
   post '/login' do
+    redirect '/' if params[:username] == "" || params[:password] == ""
     login(params[:username], params[:password])
     redirect '/account'
   end
@@ -29,12 +30,15 @@ class UserController < ApplicationController
   # end
 
   get '/account' do
-    @current_user = User.find_by_id(session[:user_id])
-    if @current_user
-      erb :'account/account'
-    else
-      erb :'account/error'
-    end
+    redirect '/' if !logged_in?
+    erb :'account/account'
+
+    # @current_user = User.find_by_id(session[:user_id])
+    # if @current_user
+    #   erb :'account/account'
+    # else
+    #   erb :'account/error'
+    # end
   end
 
   post '/account' do
