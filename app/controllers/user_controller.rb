@@ -18,6 +18,7 @@ class UserController < ApplicationController
   post '/login' do
     redirect '/' if params[:username] == "" || params[:password] == ""
     login(params[:username], params[:password])
+    @current_user = User.find_by_id(session[:id])
     redirect '/account'
   end
 

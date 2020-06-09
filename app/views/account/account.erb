@@ -1,8 +1,8 @@
 <h1>Welcome to your account</h1>
-<h2>You have <%= User.facts.size %> facts saved </h2>
+<h2>You have <%= @current_user.facts.size %> facts saved </h2>
 
 <label><h4>Facts</h4></label>
-<% User.facts.each do |fact| %>
+<% @current_user.facts.each do |fact| %>
   <!--<label><%= fact.title %></label>-->
   <a href="/fact/<%=fact.name%>"><%=fact.title%></a>
   <label><%= fact.description%></label>
