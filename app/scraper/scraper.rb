@@ -7,6 +7,17 @@ class Scraper
   def self.scrape_category_titles
     scrape_categories = Nokogiri::HTML(open("https://wtffunfact.com/"))
     category_names = scrape_categories.css("ul li.cat-item a").text.split /(?=[A-Z])/
+    create_category(category_names)
+    category_names
+  end
+
+  def self.create_category(category_names)
+    category_names.each_with_index do |category, index|
+      category = Category.new
+      category.name = category_names[index]
+      category.save
+      Category.all << category
+    end
   end
 
   def self.scrape_facts(category)

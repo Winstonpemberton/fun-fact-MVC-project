@@ -1,8 +1,9 @@
 class CategoryController < ApplicationController
 
   get "/categories" do
-    # @categories = Category.all
-    @categories = Scraper.scrape_category_titles
+    @categories = Category.all
+    # @categories = Scraper.scrape_category_titles
+    Scraper.scrape_category_titles
     erb :'categories/categories'
   end
 

@@ -1,7 +1,7 @@
 <form action="/categories/:category" method="post">
 
 <label><h4>Categories</h4></label>
-<% @categories do |category| %>
+<% @categories.each do |category| %>
   <input type="radio" id="<%=category.id%>" name="<%=category.name%>" value="<%= category.id%>"><br>
 <% end %>
 
