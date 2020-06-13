@@ -12,25 +12,20 @@ class Scraper
   end
 
   def self.create_category(category_names)
-    category_names.each_with_index do |category, index|
-      category = Category.new
-      category.name = category_names[index]
-      if Category.all.find(category) == nil
-        category.save
-        Category.all << category
-      end
+    category_names.each do |category|
+      category_name = category
+      Category.find_or_create_by(:name => category_name)
     end
+    binding.pry
   end
 
   def self.scrape_facts(category)
     category_page = Nokogiri::HTML(open("https://wtffunfact.com/#{category.name.downcase}-facts/"))
-
     if category_page.empty
       category_page = Nokogiri::HTML(open("https://wtffunfact.com/#{category.name.downcase}/"))
     else
       puts "something went wrong"
     end
-
     category.facts = scrape_fact_info(category_page)
   end
 
