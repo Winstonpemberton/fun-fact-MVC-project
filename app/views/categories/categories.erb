@@ -1,9 +1,9 @@
-<form action="/categories/:category" method="post">
+<form action='/categories/:id' method="post">
 
 <label><h4>Categories</h4></label>
 <% @categories.each do |category| %>
   <%= category.name %>
-  <input type="radio" id="<%=category.id%>" name="<%=category.name%>" value="<%= category.id%>"><br>
+  <input type="radio" id="<%=category.id%>" name="category" value="<%=category.id%>"><br>
 <% end %>
 
 
@@ -11,7 +11,7 @@
     <a href="/categories/<%=category.name%>"><%=category.name%></a>
   <%end%>
 -->
-
+<br>
 <input type="submit" value="category page">
-
+<br>
 <a class="button" href="/account">Account</a>

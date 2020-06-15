@@ -2,9 +2,9 @@
 
   <label><h4>Facts</h4></label>
   <% @category_facts.each do |fact| %>
-    <label><%= fact.title %></label>
+    <label><%= fact.title %></label><br>
     <label><%= fact.description%></label>
-    <input type="checkbox" id="fact_<%=fact.id%>" name="user[facts]" value="<%= fact.id%>"><br>
+    <input type="checkbox" id="fact_<%=fact.id%>" name="user[facts]" value="<%= fact.id%>"><br><br>
   <% end %>
 
   <input type="submit" value="Save Fact">

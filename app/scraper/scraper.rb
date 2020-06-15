@@ -16,12 +16,11 @@ class Scraper
       category_name = category
       Category.find_or_create_by(:name => category_name)
     end
-    binding.pry
   end
 
   def self.scrape_facts(category)
     category_page = Nokogiri::HTML(open("https://wtffunfact.com/#{category.name.downcase}-facts/"))
-    if category_page.empty
+    if category_page == nil
       category_page = Nokogiri::HTML(open("https://wtffunfact.com/#{category.name.downcase}/"))
     else
       puts "something went wrong"

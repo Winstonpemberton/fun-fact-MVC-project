@@ -7,8 +7,8 @@ class CategoryController < ApplicationController
     erb :'categories/categories'
   end
 
-  post "/categories/:id" do
-    @category = Category.find(params[:id])
+  post '/categories/:id' do
+    category = Category.find(params[:category])
     Scraper.scrape_facts(category)
     @category_facts = category.facts
     erb :'categories/category_facts'
