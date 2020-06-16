@@ -4,7 +4,7 @@
 <label><h4>Facts</h4></label>
 <% @current_user.facts.each do |fact| %>
   <!--<label><%= fact.title %></label>-->
-  <a href="/fact/<%=fact.name%>"><%=fact.title%></a>
+  <a href="/fact/<%=fact.title%>"><%=fact.title%></a>
   <label><%= fact.description%></label>
 
   <!--<a href="/fact/<%=fact.name%>"><%=fact.title%></a>-->

@@ -4,6 +4,7 @@ class CreateFacts < ActiveRecord::Migration
       t.string :title
       t.string :description
       t.integer :category_id
+      t.integer :user_id
     end
   end
 end

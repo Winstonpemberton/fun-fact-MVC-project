@@ -3,7 +3,7 @@
   <label><h4>Facts</h4></label>
   <% @category_facts.each do |fact| %>
     <label><%= fact.title %></label><br>
-    <label><%= fact.description%></label>
+    <label><%= fact.description%></label><br>
     <input type="checkbox" id="fact_<%=fact.id%>" name="user[facts]" value="<%= fact.id%>"><br><br>
   <% end %>
 

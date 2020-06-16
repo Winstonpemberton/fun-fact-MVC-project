@@ -48,23 +48,24 @@ class Scraper
   def self.scrape_fact_info(category_page)
     #scrape_facts = Nokogiri::HTML(open(url))
     facts = []
-
     category_page.css("article").collect do |fact|
-      fact_object = Fact.new
-      fact_object.title = fact.css("h2.entry-title").text.split(" – ")[1]
-      fact_object.image_url = fact.css("div.post-image img").attribute("src").value
-      description_source_url = fact.css("h2.entry-title a").attribute("href").value
+      fact_name = fact.css("h2.entry-title").text.split(" – ")[1]
+      if Fact.find_by(:title => fact_name) == nil
+        fact_object = Fact.new
+        fact_object.title = fact.css("h2.entry-title").text.split(" – ")[1]
+        fact_object.image_url = fact.css("div.post-image img").attribute("src").value
+        description_source_url = fact.css("h2.entry-title a").attribute("href").value
 
-      description_source_info = Nokogiri::HTML(open(description_source_url))
-      fact_object.description = description_source_info.css("div.inside-article p").text.split(" – WTF Fun Facts Source: ")[0]
-      source_info = description_source_info.css("div.inside-article p").text.split(" – WTF Fun Facts Source: ")[1]
+        description_source_info = Nokogiri::HTML(open(description_source_url))
+        fact_object.description = description_source_info.css("div.inside-article p").text.split(" – WTF Fun Facts Source: ")[0]
+        source_info = description_source_info.css("div.inside-article p").text.split(" – WTF Fun Facts Source: ")[1]
 
-      if source_info == nil
-        fact_object.description = description_source_info.css("div.inside-article p").text.split(" – WTF Fun FactsSource: ")[0]
+        if source_info == nil
+          fact_object.description = description_source_info.css("div.inside-article p").text.split(" – WTF Fun FactsSource: ")[0]
+        end
+        facts << fact_object
+        # Fact.all << fact_object
       end
-
-      facts << fact_object
-      Fact.all << fact_object
     end
     facts
   end
