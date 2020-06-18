@@ -3,14 +3,12 @@
 
 <label><h4>Facts</h4></label>
 <% @current_user.facts.each do |fact| %>
-  <!--<label><%= fact.title %></label>-->
-  <a href="/fact/<%=fact.title%>"><%=fact.title%></a>
-  <label><%= fact.description%></label>
+  <a href="/fact/<%=fact.slug%>"><%=fact.title%></a><br>
+  <label><%= fact.description%></label><br><br>
 
-  <!--<a href="/fact/<%=fact.name%>"><%=fact.title%></a>-->
 
 <% end %>
 
-<a class="button" href="/categories">Categories</a>
-<a class="button" href="/account/edit">Edit Account Information</a>
-<a class="button" href="/fact/delete">Delete Fact</a>
+<a class="button" href="/categories">Categories</a><br>
+<a class="button" href="/account/edit">Edit Account Information</a><br>
+<a class="button" href="/fact/delete">Delete Fact</a><br>

@@ -51,6 +51,7 @@ class Scraper
     category_page.css("article").collect do |fact|
       fact_name = fact.css("h2.entry-title").text.split(" – ")[1]
       if Fact.find_by(:title => fact_name) == nil
+        binding.pry
         fact_object = Fact.new
         fact_object.title = fact.css("h2.entry-title").text.split(" – ")[1]
         fact_object.image_url = fact.css("div.post-image img").attribute("src").value
@@ -65,6 +66,10 @@ class Scraper
         end
         facts << fact_object
         # Fact.all << fact_object
+
+      else
+        fact_object = Fact.find_by(:title => fact_name)
+        facts << fact_object
       end
     end
     facts
