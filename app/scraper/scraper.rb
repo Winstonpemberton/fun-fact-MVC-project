@@ -20,6 +20,14 @@ class Scraper
 
   def self.scrape_facts(category)
     category_page = Nokogiri::HTML(open("https://wtffunfact.com/#{category.name.downcase}-facts/"))
+    if category.name == "Animals"
+      category_page = Nokogiri::HTML(open("https://www.wtffunfact.com/animal-facts/"))
+    end
+
+    if category.name == "Movies"
+      category_page = Nokogiri::HTML(open("https://www.wtffunfact.com/movie-facts/"))
+    end
+
     if category_page == nil
       category_page = Nokogiri::HTML(open("https://wtffunfact.com/#{category.name.downcase}/"))
     else
@@ -51,7 +59,6 @@ class Scraper
     category_page.css("article").collect do |fact|
       fact_name = fact.css("h2.entry-title").text.split(" – ")[1]
       if Fact.find_by(:title => fact_name) == nil
-        binding.pry
         fact_object = Fact.new
         fact_object.title = fact.css("h2.entry-title").text.split(" – ")[1]
         fact_object.image_url = fact.css("div.post-image img").attribute("src").value

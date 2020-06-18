@@ -20,7 +20,7 @@ class FactController < ApplicationController
 
   post "/fact/:id" do
     @fact = Fact.find(params[:user][:facts])
-    # @current_user = User.find_by_id(session[:id])
+    @current_user = User.find_by_id(session[:id])
     @current_user.facts  << @fact
     redirect to "/account"
   end
