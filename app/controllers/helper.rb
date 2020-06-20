@@ -12,11 +12,11 @@ module Helper
     if user && user.authenticate(password)
       session[:id] = user.id
     else
-      redirect '/login'
+      erb :'account/error'
     end
   end
 
   def logout!
     session.clear
   end
-end 
+end

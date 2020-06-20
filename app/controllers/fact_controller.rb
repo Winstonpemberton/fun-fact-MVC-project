@@ -13,6 +13,11 @@ class FactController < ApplicationController
 #   erb :'/songs/show'
 # end
 
+  get "/fact/delete" do
+    @current_user = User.find_by_id(session[:id])
+    erb :'facts/delete_fact'
+  end
+
   get '/fact/:slug' do
     @fact = Fact.find {|fact| fact.slug == params[:slug] }
     erb :'facts/fact_info'
@@ -25,12 +30,11 @@ class FactController < ApplicationController
     redirect to "/account"
   end
 
-  get "fact/delete" do
-    erb :'facts/delete_fact'
-  end
 
   delete "/fact/delete/:id" do
-    @current_user.facts.destroy(params[:id])
+    # binding.pry
+    @current_user = User.find_by_id(session[:id])
+    @current_user.facts.destroy(params[:user][:facts])
     redirect to "/account"
   end
 end

@@ -49,11 +49,13 @@ class UserController < ApplicationController
     erb :'account/account_edit'
   end
 
-  post '/account/edit' do
-    @current_user = User.find_by_id(session[:user_id])
+  patch '/account/edit' do
+    # binding.pry
+    @current_user = User.find_by_id(session[:id])
     @current_user.username =  params[:username]
     @current_user.password =  params[:password]
     @current_user.email =  params[:email]
+    @current_user.save
 
     redirect to '/account'
   end

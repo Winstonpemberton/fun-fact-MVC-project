@@ -3,9 +3,9 @@
 <form action="/fact/delete/:id" method="post">
   <input type="hidden" name="_method" value="delete" >
   <label><h4>Facts</h4></label>
-  <% @category_facts.each do |fact| %>
-    <label><%= fact.title %></label>
-    <label><%= fact.description%></label>
-    <input type="checkbox" id="fact_<%=fact.id%>" name="user[facts]" value="<%= fact.id%>"><br>
+  <% @current_user.facts.each do |fact| %>
+    <label><%= fact.title %></label><br>
+    <label><%= fact.description%></label><br>
+    <input type="checkbox" id="fact_<%=fact.id%>" name="user[facts]" value="<%= fact.id%>"><br><br>
   <% end %>
   <input type="submit">
