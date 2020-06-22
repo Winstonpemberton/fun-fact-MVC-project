@@ -1,7 +1,6 @@
 
 require 'bundler/setup'
 Bundler.require
-# require 'open-uri'
 require_all './app'
 require_relative '../app/models/concerns/slugifiable.rb'
 
@@ -13,6 +12,3 @@ ActiveRecord::Base.establish_connection(
 )
 
 require_relative "../app/controllers/application_controller.rb"
-#
-# Dir[File.join(File.dirname(__FILE__), "../app/models", "*.rb")].each {|f| require f}
-# Dir[File.join(File.dirname(__FILE__), "../app/controllers", "*.rb")].sort.each {|f| require f}
