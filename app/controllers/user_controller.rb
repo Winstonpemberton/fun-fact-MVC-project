@@ -8,8 +8,13 @@ class UserController < ApplicationController
   post '/sign_up' do
     user = User.create(params)
     session[:id] = user.id
+    username = user.username
 
-    if user.save
+    if name_taken?(username)
+      redirect '/name_taken'
+    end
+
+    if user.save && name_taken?(user.username) == false
       redirect '/'
     else
       redirect '/signup'
@@ -44,6 +49,11 @@ class UserController < ApplicationController
     @current_user.save
 
     redirect to '/account'
+  end
+
+  get '/logout' do
+    logout!
+    redirect '/'
   end
 
 end
