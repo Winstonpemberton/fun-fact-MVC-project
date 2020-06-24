@@ -1,6 +1,8 @@
 class Fact < ActiveRecord::Base
-  extend Slugifiable::ClassMethods
+  # makes the slug method useable for facts
   include Slugifiable::InstanceMethods
-
+  # facts belong to a category
   belongs_to :category
+  # facts belong to a user
+  belongs_to :user
 end

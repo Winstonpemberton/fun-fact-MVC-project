@@ -50,7 +50,7 @@ class UserController < ApplicationController
 
     redirect to '/account'
   end
-
+# the route used to log a user out
   get '/logout' do
     logout!
     redirect '/'

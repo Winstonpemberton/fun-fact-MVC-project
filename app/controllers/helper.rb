@@ -12,7 +12,7 @@ module Helper
       session[:id] = user.id
     end
   end
-
+# sees if a username is already in use
   def name_taken?(username)
     usernames = []
     User.all.each do |user|
@@ -20,7 +20,7 @@ module Helper
     end
     usernames.include?(username)
   end
-
+# logs the user out
   def logout!
     session.clear
   end
