@@ -5,4 +5,6 @@ class Fact < ActiveRecord::Base
   belongs_to :category
   # facts belong to a user
   belongs_to :user
+  # facts have many comments
+  has_many :comments
 end

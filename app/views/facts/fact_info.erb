@@ -2,5 +2,10 @@
 <img src="<%=@fact.image_url%>" alt="fact's image">
 <p><%=@fact.description%></p>
 
+<label>Add A Comment</label>
+<input type="text" name="fact[comments]" id="comment.id">
+
+<input type="submit" value="submit">
+
 <a class="button" href="/categories">Categories</a><br>
 <a class="button" href="/account">Account</a>
