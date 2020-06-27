@@ -25,4 +25,12 @@ class FactController < ApplicationController
     @current_user.facts.destroy(params[:user][:facts])
     redirect to "/account"
   end
+
+  post "fact/comments/:id" do
+    @current_user = User.find_by_id(session[:id])
+    @current_fact = Fact.find_by_id(params[:id])
+
+    @tweet = current_fact.tweets.create(params[:facts][:comments])
+
+
 end
