@@ -5,10 +5,16 @@ class FactController < ApplicationController
     @current_user = User.find_by_id(session[:id])
     erb :'facts/delete_fact'
   end
-# pulls up the the information on a single fact
-  get '/fact/:slug' do
-    @fact = Fact.find {|fact| fact.slug == params[:slug] }
-    erb :'facts/fact_info'
+
+  post "/fact/comments" do
+    binding.pry
+    @current_user = User.find_by_id(session[:id])
+    @fact = Fact.find_by_id(params.keys.join.to_i)
+
+    @comment = Comment.new
+    @comment.text = (params[:fact][:comments])
+    @current_user.comments << @comment
+    @fact.comments << @comment
   end
 
 # used to add a fact to the users account
@@ -26,11 +32,10 @@ class FactController < ApplicationController
     redirect to "/account"
   end
 
-  post "fact/comments/:id" do
-    @current_user = User.find_by_id(session[:id])
-    @current_fact = Fact.find_by_id(params[:id])
-
-    @tweet = current_fact.tweets.create(params[:facts][:comments])
-
+# pulls up the the information on a single fact
+  get '/fact/:slug' do
+    @fact = Fact.find {|fact| fact.slug == params[:slug] }
+    erb :'facts/fact_info'
+  end
 
 end
