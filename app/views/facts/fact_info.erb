@@ -2,7 +2,12 @@
 <img src="<%=@fact.image_url%>" alt="fact's image">
 <p><%=@fact.description%></p>
 
-<p><%=@fact.comments%></p>
+<h2>Comments</h2>
+
+<% @fact.comments.each do |comment| %>
+  <% user = User.find_by_id(comment.user_id)%>
+  <p><%=user.username%>: <%=comment.text %><br></p>
+<%end%>
 
 <form action="/fact/comments" method="post">
 

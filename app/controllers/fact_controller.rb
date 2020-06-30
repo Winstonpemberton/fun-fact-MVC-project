@@ -7,14 +7,14 @@ class FactController < ApplicationController
   end
 
   post "/fact/comments" do
-    binding.pry
     @current_user = User.find_by_id(session[:id])
     @fact = Fact.find_by_id(params.keys.join.to_i)
-
     @comment = Comment.new
-    @comment.text = (params[:fact][:comments])
+    @comment.text = params[params.keys.join][:comments]
     @current_user.comments << @comment
     @fact.comments << @comment
+    @comment.save
+    redirect to "/fact/#{@fact.slug}"
   end
 
 # used to add a fact to the users account
