@@ -6,7 +6,7 @@
 
 <% @fact.comments.each do |comment| %>
   <% user = User.find_by_id(comment.user_id)%>
-  <p><%=user.username%>: <%=comment.text %><br></p>
+  <p><%=user.username%>: <%=comment.text %></p><br>
 <%end%>
 
 <form action="/fact/comments" method="post">
@@ -19,3 +19,4 @@
 
 <a class="button" href="/categories">Categories</a><br>
 <a class="button" href="/account">Account</a>
+<a class="button" href="/logout">Logout</a><br>

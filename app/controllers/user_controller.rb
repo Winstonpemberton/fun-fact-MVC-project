@@ -50,6 +50,11 @@ class UserController < ApplicationController
 
     redirect to '/account'
   end
+
+  get "/account/comments" do
+    @current_user = User.find_by_id(session[:id])
+    erb :'account/comments'
+  end
 # the route used to log a user out
   get '/logout' do
     logout!

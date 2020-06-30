@@ -1,0 +1,9 @@
+<% @current_user.comments.each do |comment| %>
+  <% fact = Fact.find_by_id(comment.fact_id)%>
+  <a href="/fact/<%=fact.slug%>"><%=fact.title%></a>
+  <p><%=comment.text %></p><br>
+<%end%>
+
+<a class="button" href="/account">Account</a>
+<a class="button" href="/categories">Categories</a><br>
+<a class="button" href="/logout">Logout</a><br>
