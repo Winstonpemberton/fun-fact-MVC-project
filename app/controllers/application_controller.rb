@@ -16,11 +16,11 @@ class ApplicationController < Sinatra::Base
   end
 # if the user types in the worng information the route is supposed to be used
   get '/error' do
-    erb :'account/error'
+    erb :'errors/error'
   end
 
   get '/name_taken' do
-    erb :'account/name_taken'
+    erb :'errors/name_taken'
   end
 
 end
