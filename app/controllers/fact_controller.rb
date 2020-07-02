@@ -11,10 +11,17 @@ class FactController < ApplicationController
     erb :'facts/edit_comment_text'
   end
 
+  post '/fact/comments/edit_text' do
+    @comment = Comment.find_by_id(params[:comment])
+    @current_user = User.find_by_id(session[:id])
+
+  end
+
   get "/fact/comments/edit/:fact" do
     @fact = Fact.find_by_id(params[:fact])
     erb :'facts/edit_comment'
   end
+
 
   post "/fact/comments" do
     @current_user = User.find_by_id(session[:id])
