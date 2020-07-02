@@ -6,6 +6,16 @@ class FactController < ApplicationController
     erb :'facts/delete_fact'
   end
 
+  post '/fact/comments/edit' do
+    @comment = Comment.find_by_id(params[:comment])
+    erb :'facts/edit_comment_text'
+  end
+
+  get "/fact/comments/edit/:fact" do
+    @fact = Fact.find_by_id(params[:fact])
+    erb :'facts/edit_comment'
+  end
+
   post "/fact/comments" do
     @current_user = User.find_by_id(session[:id])
     @fact = Fact.find_by_id(params.keys.join.to_i)
