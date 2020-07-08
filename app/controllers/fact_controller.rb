@@ -11,14 +11,18 @@ class FactController < ApplicationController
     erb :'facts/edit_comment_text'
   end
 
-  post '/fact/comments/edit_text' do
-    @comment = Comment.find_by_id(params[:comment])
-    @current_user = User.find_by_id(session[:id])
+  patch '/fact/comments/edit_text' do
+    @comment = Comment.find_by_id(params.keys[1].to_i)
+    @comment.text = params.values[1].values.join
+    @comment.save
+    @fact = Fact.find_by_id(@comment.fact_id)
 
+    redirect to "/fact/#{@fact.slug}"
   end
 
   get "/fact/comments/edit/:fact" do
     @fact = Fact.find_by_id(params[:fact])
+    @current_user = User.find_by_id(session[:id])
     erb :'facts/edit_comment'
   end
 

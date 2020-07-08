@@ -10,6 +10,7 @@
   <%if comment.user_id == @current_user.id%>
   <%=@current_user.username%>: <%=comment.text %>
   <input type="checkbox" id="<%=comment.id%>" name="comment" value="<%=comment.id%>"><br><br>
+  <%end%>
 <%end%>
 
 <input type="submit" value="submit">
