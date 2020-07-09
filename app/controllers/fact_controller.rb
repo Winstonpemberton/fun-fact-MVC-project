@@ -6,7 +6,7 @@ class FactController < ApplicationController
     erb :'facts/delete_fact'
   end
 
-  post '/fact/comments/edit' do
+  post '/fact/comments/select' do
     @comment = Comment.find_by_id(params[:comment])
     erb :'facts/edit_comment_text'
   end
@@ -20,10 +20,24 @@ class FactController < ApplicationController
     redirect to "/fact/#{@fact.slug}"
   end
 
-  get "/fact/comments/edit/:fact" do
+  get "/fact/comments/delete/:fact" do
     @fact = Fact.find_by_id(params[:fact])
     @current_user = User.find_by_id(session[:id])
-    erb :'facts/edit_comment'
+    erb :'facts/delete_comment'
+  end
+
+  delete "/fact/comments/delete" do
+    @comment = Comment.find_by_id(params.values[1].to_i)
+    Comment.destroy(@comment)
+
+    redirect to "/account"
+  end
+
+
+  get "/fact/comments/select/:fact" do
+    @fact = Fact.find_by_id(params[:fact])
+    @current_user = User.find_by_id(session[:id])
+    erb :'facts/select_comment'
   end
 
 

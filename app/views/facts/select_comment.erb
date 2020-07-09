@@ -1,4 +1,4 @@
-<form action='/fact/comments/edit' method="post">
+<form action='/fact/comments/select' method="post">
 
 <h1><%=@fact.title%></h1>
 <img src="<%=@fact.image_url%>" alt="fact's image">
@@ -16,3 +16,7 @@
 <input type="submit" value="submit">
 
 </form>
+
+<a class="button" href="/categories">Categories</a><br>
+<a class="button" href="/account">Account</a><br>
+<a class="button" href="/logout">Logout</a><br>
