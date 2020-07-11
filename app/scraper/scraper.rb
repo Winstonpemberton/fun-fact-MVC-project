@@ -28,7 +28,7 @@ class Scraper
       category_page = Nokogiri::HTML(open("https://www.wtffunfact.com/movie-facts/"))
     end
 
-    if category.name == "Sports" || category.name == "Science" || category.name == "Uncategorized"
+    if category.name == "Sports" || category.name == "Science" || category.name == "Uncategorized" || category.name == "Music"
       category_page = Nokogiri::HTML(open("https://wtffunfact.com/#{category.name.downcase}/"))
     else
       puts "something went wrong"
@@ -47,12 +47,7 @@ class Scraper
         description_source_url = fact.css("h2.entry-title a").attribute("href").value
 
         description_source_info = Nokogiri::HTML(open(description_source_url))
-        fact_object.description = description_source_info.css("div.inside-article p").text.split(" – WTF Fun Facts Source: ")[0]
-        source_info = description_source_info.css("div.inside-article p").text.split(" – WTF Fun Facts Source: ")[1]
-
-        if source_info == nil
-          fact_object.description = description_source_info.css("div.inside-article p").text.split(" – WTF Fun FactsSource: ")[0]
-        end
+        fact_object.description = description_source_info.css("div.inside-article p").text.split("–")[0]
         facts << fact_object
 
       else

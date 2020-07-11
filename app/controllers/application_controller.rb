@@ -18,7 +18,7 @@ class ApplicationController < Sinatra::Base
   get '/error' do
     erb :'errors/error'
   end
-
+# if a username is taken this route pulls up the error page saying so
   get '/name_taken' do
     erb :'errors/name_taken'
   end

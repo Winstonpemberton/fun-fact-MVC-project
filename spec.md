@@ -19,7 +19,9 @@ Specs:
 - [x] Include user accounts with unique login attribute (username or email)
   Signup route checks to see if the name is already in use
 
-- [ ] Ensure that the belongs_to resource has routes for Creating, Reading, Updating and Destroying
+- [x] Ensure that the belongs_to resource has routes for Creating, Reading, Updating and Destroying
+  facts belong to users and can be viewed and deleted. User information can be edited. Comments belong to a
+  user and they can be created, viewed, updated and deleted.
 
 - [x] Ensure that users can't modify content created by other users
   Sessions and user ids are used to keep track of which user is currently logged in and accounts have secured passwords.

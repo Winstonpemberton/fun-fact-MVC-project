@@ -1,37 +1,38 @@
 class UserController < ApplicationController
 
-# used to pull up the sign up page
+# used to pull up the signup page
   get '/sign_up' do
     erb :'account/sign_up'
   end
-# used to create a user with the information they typed in
+# used to create a user with the information users typed in
   post '/sign_up' do
-    user = User.create(params)
-    session[:id] = user.id
-    username = user.username
-
+    username =  params[:username]
     if name_taken?(username)
       redirect '/name_taken'
     end
-
-    if user.save && name_taken?(user.username) == false
+    if name_taken?(username) == false
+      user = User.create(params)
+      session[:id] = user.id
       redirect '/'
     else
       redirect '/signup'
     end
+    redirect '/'
   end
-# used to login to a users account
+# Makes sure login information is correct then redirects to the account route
   post '/login' do
     redirect '/error' if params[:username] == "" || params[:password] == ""
     login(params[:username], params[:password])
     redirect '/account'
   end
+
 # if the login succeeded it opens the users account page
   get '/account' do
     redirect '/error' if !logged_in?
     @current_user = User.find_by_id(session[:id])
     erb :'account/account'
   end
+
 # some erbs post to account but I just need it to pull up their account page
   post '/account' do
     redirect to '/account'
@@ -50,7 +51,7 @@ class UserController < ApplicationController
 
     redirect to '/account'
   end
-
+# gets all the comments done by this user and a link to their associated fact
   get "/account/comments" do
     @current_user = User.find_by_id(session[:id])
     erb :'account/comments'

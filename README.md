@@ -1,7 +1,7 @@
 # fun-fact-MVC-project
 
 MVC Project
-Welcome to my Fun Fact Collector gem, this gem is the new and improved version of my last project. It lets you see facts from 14 different categories and add them to your account. The homepage will ask you to signup with a username, email and password. Once you complete the signup you can login and be brought to your account. Your account shows you how many facts you've collected, to see the list of categories, edit you login information, delete a fact from your account and to logout. Each added fact has a hyperlink for a title and when clicked on will bring you to that fact's page, which shows all the information on the fact and a picture.
+Welcome to my Fun Fact Collector gem, this gem is the new and improved version of my last project. It lets you see facts from 14 different categories and add them to your account. The homepage will ask you to signup with a username, email and password. Once you complete the signup you can login and be brought to your account. Your account shows you how many facts you've collected, to see the list of categories, edit you login information, delete a fact from your account, see all of your comments and logout. Each added fact has a hyperlink for a title and when clicked on will bring you to that fact's page, which shows all the information on the fact and a picture. You can also add comments to each fact which can be edited and deleted.
 
 Installation
 Add this line to your application's Gemfile:
