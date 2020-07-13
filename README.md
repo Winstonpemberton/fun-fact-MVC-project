@@ -14,7 +14,7 @@ Or install it yourself as:
 
 $ gem install fun-fact-MVC-project
 Usage
-Once the gem is installed type shotgun in the console and got to the address displayed in any browser.
+Once the gem is installed type shotgun in the console and go to the address displayed in any browser.
 
 Contribution
 This project relies heavily on the website WTF Fun facts and will give credit to them.
