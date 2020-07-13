@@ -1,3 +1,7 @@
 <h2>Sorry that username is already taken, try again</h2>
 
-<h4><a href="/sign_up">Sign up</a></h4>
+<h4><a href="/sign_up">Sign up</a></h4><br>
+
+<% if logged_in? %>
+<a class="button" href="/account">Account</a>
+<%end%>

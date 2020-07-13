@@ -44,6 +44,10 @@ class UserController < ApplicationController
 # changes the login information to the newly typed information
   patch '/account/edit' do
     @current_user = User.find_by_id(session[:id])
+    username =  params[:username]
+    if name_taken?(username)
+      redirect '/name_taken'
+    end
     @current_user.username =  params[:username]
     @current_user.password =  params[:password]
     @current_user.email =  params[:email]

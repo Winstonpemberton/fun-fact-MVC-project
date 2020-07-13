@@ -8,13 +8,13 @@ Specs:
   Uses ActiveRecord for a database under the db file.
 
 - [x] Include more than one model class (e.g. User, Post, Category)
-  Has three models. User, Category and Fact.
+  Has four models. User, Category, Fact, Comment.
 
 - [x] Include at least one has_many relationship on your User model (e.g. User has_many Posts)
-  Has two many to many relationships. Users have many facts and categories have many facts.
+  Has three many to many relationships. Users have many facts, Users have many Comments, categories have many facts and Facts have many Comments.
 
 - [x] Include at least one belongs_to relationship on another model (e.g. Post belongs_to User)
-  facts belong to both users and categories
+  facts belong to both users and categories. Commments belong to both Users and Facts
 
 - [x] Include user accounts with unique login attribute (username or email)
   Signup route checks to see if the name is already in use
